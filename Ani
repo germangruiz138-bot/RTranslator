@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Galaxia para ti</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div id="galaxia"></div>
+    
+    <script src="script.js"></script>
+</body>
+</html>body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#galaxia {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.mensaje {
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    padding: 10px;
+    border-radius: 10px;
+    opacity: 0;
+    animation: aparecer 2s forwards;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.mensaje:hover {
+    transform: scale(1.2);
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes aparecer {
+    to {
+        opacity: 1;
+    }
+}document.addEventListener('DOMContentLoaded', () => {
+
+    const mensajes = [
+        "Eres mi sol, mi luna y todas mis estrellas.",
+        "Cada vez que te veo, mi corazón salta de alegría.",
+        "Tu sonrisa es lo más bonito del universo.",
+        "Juntos, somos un universo infinito de amor.",
+        "Gracias por ser la persona más increíble que he conocido.",
+        "Eres la razón por la que mi mundo es tan brillante.",
+        "Te amo más allá de las palabras y el tiempo.",
+        "Contigo, cada día es una aventura en el espacio.",
+        // Agrega aquí todos los mensajes que quieras para tu novia
+    ];
+
+    const galaxia = document.getElementById('galaxia');
+
+    mensajes.forEach((texto, index) => {
+        const elementoMensaje = document.createElement('div');
+        elementoMensaje.classList.add('mensaje');
+        elementoMensaje.textContent = texto;
+
+        const x = Math.random() * (window.innerWidth - 200);
+        const y = Math.random() * (window.innerHeight - 100);
+
+        elementoMensaje.style.left = `${x}px`;
+        elementoMensaje.style.top = `${y}px`;
+
+        elementoMensaje.style.animationDelay = `${index * 0.5}s`;
+
+        galaxia.appendChild(elementoMensaje);
+    });
+
+});
